@@ -18,10 +18,10 @@ function App() {
 
       <Routes>
     
-      <Route path= "https://openai-proto.netlify.app//Home" element={ <Home />}> </Route>
-      <Route path= "https://openai-proto.netlify.app//Text" element={ <Text />}> </Route>
-      <Route path= "https://openai-proto.netlify.app//Images" element={ <Images />}> </Route>
-      <Route path= "https://openai-proto.netlify.app//Keywords" element={ <Keywords />}> </Route>
+      <Route path= "https://openai-proto.netlify.app/Home" element={ <Home />}> </Route>
+      <Route path= "https://openai-proto.netlify.app/Text" element={ <Text />}> </Route>
+      <Route path= "https://openai-proto.netlify.app/Images" element={ <Images />}> </Route>
+      <Route path= "https://openai-proto.netlify.app/Keywords" element={ <Keywords />}> </Route>
      
       </Routes>
      
