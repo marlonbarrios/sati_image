@@ -19,11 +19,11 @@ class Navigation extends Component {
                 <Navbar.Toggle />
                 <Navbar.Collapse>
                     <Nav>
-                        <Nav.Link href="https://openai-proto.netlify.app/Home">Home</Nav.Link> 
+                        <Nav.Link href="./Home">Home</Nav.Link> 
                        
-                        <Nav.Link href="https://openai-proto.netlify.app/Text">Solving Problems</Nav.Link>
-                        <Nav.Link href="https://openai-proto.netlify.app/Keywords">Keywords</Nav.Link>
-                        <Nav.Link href="https://openai-proto.netlify.app/Images">Text_to_Image</Nav.Link>
+                        <Nav.Link href="./Text">Solving Problems</Nav.Link>
+                        <Nav.Link href="./Keywords">Keywords</Nav.Link>
+                        <Nav.Link href="./Images">Text_to_Image</Nav.Link>
                       
                         </Nav>
                     </Navbar.Collapse>

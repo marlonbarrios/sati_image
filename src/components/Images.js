@@ -28,7 +28,7 @@ onFormSubmit = (e) => {
 
 
 const configuration = new Configuration({
-    // apiKey: "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"
+ 
     apiKey: process.env.REACT_APP_OPENAI_API_KEY
 
       });
