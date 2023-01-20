@@ -8,7 +8,7 @@ function App() {
 
     <div className="App" style={{
       backgroundImage: `url(${process.env.PUBLIC_URL
-        + "/back.png"})`,
+        + "/back2.png"})`,
     height: "300px", backgroundRepeat: "repeat"
   }} >
       <Container>
