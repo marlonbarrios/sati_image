@@ -3,7 +3,6 @@ import React from "react";
 import { Component } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {saveFile} from 'p5';
 const {Configuration, OpenAIApi } = require ('openai');
 
 
