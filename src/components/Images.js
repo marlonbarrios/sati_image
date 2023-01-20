@@ -66,7 +66,7 @@ render() {
     fontSize: "20px",
     textShadow: "2px 5px 4px #000000",
   
-  }} >Generate images based on what OpenAI model thinks as Bauhaus style. You may add some propt words such as colors or any other compositional aspect...</Form.Label> 
+  }} >Generate images based on what OpenAI 'thinks' is Bauhaus style. You may add some prompt words such as colors or any other compositional feature...</Form.Label> 
 
                         <Form.Control 
                         type="text" 
