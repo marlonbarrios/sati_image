@@ -13,8 +13,14 @@ class Footer extends Component {
                 <Card.Body>
                 <Card.Title></Card.Title>
                 <Card.Text>
-                   <p>OpenAI R&D by <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/marlon-barrios-solano-98599b205/">Marlon Barrios Solano</a></p>
+               
+                   <p>Concept and programming by <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/marlon-barrios-solano-98599b205/">Marlon Barrios Solano</a></p>
+                   <p><a target="_blank" rel="noreferrer" href=" https://beta.openai.com/overview">OpenAI</a></p>
+                   <p><a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Bauhaus">Bauhaus</a></p>
+               
+               
                 </Card.Text>
+              
                 </Card.Body>
             </Card>
             </Container>

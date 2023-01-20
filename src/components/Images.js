@@ -2,11 +2,9 @@
 import React from "react";
 import { Component } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
-import Footer from "./Footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const {Configuration, OpenAIApi } = require ('openai');
-
-
-
 
 
 class Images extends Component {
@@ -14,7 +12,7 @@ class Images extends Component {
   super();
     this.state = {
         heading: "The image will appear here",
-        response: "...creating image",
+        response: "...creating image...",
     }
 }
 
@@ -36,7 +34,7 @@ const configuration = new Configuration({
 const openai= new OpenAIApi(configuration)
 
 openai.createImage({
-    prompt: `${formDataObj.ideaName}`,
+    prompt: `bauhaus style image background design textiles architecture objects 2D 3D shapes colors art sets ${formDataObj.ideaName}`,
     n: 1,
     size: "1024x1024",
   }).then((response) => {
@@ -47,29 +45,41 @@ openai.createImage({
 });
 }
 
-
 render() {
     return (
         <div>
             <Container>
-                <h1>Generate Images from Text</h1>
+            
+                <h1 style={{
+    color: "white",
+    fontFamily: "Helvetica",
+    fontSize: "60px",
+    textShadow: "2px 5px 4px #000000",
+    marginTop: "20px",
+  }}>INFINITE BAUHAUS</h1>
                 <br/>
                 <Form onSubmit={this.onFormSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Write a prompt with the characteristics of the image</Form.Label>
+                        <Form.Label style={{
+    color: "white",
+    fontFamily: "Helvetica",
+    fontSize: "20px",
+    textShadow: "2px 5px 4px #000000",
+  
+  }} >Generate images based on what OpenAI model thinks as Bauhaus style. You may add some propt words such as colors or any other compositional aspect...</Form.Label> 
 
                         <Form.Control 
                         type="text" 
                         name="ideaName"
-                        placeholder="Promt for image" />
+                        placeholder="Prompt to tweak the AI style" />
 
                         <Form.Text className="text-muted">
-                        
+
                         </Form.Text>
                     </Form.Group>
-
-                    <Button variant="primary" size='lg' type="submit">
-                     OpenAI AI Generate Image
+                    <Button variant="primary" size='lg' type="submit" style={{  textShadow: "2px 5px 4px #000000",
+                boxShadow:    "2px 5px 4px #000000"   }}>
+                     Generate OpenAI Bauhaus Image
                     </Button>
                 </Form>
                 <br/>
@@ -77,24 +87,24 @@ render() {
 
                 <Card>
                     <Card.Body>
-                    <Card.Title><h4>{this.state.heading}</h4></Card.Title>
+                    <Card.Title><h4>Bauhaus style + {this.state.heading}</h4></Card.Title>
                     <hr/>
                     <br/>
                         <Card.Text>
-                        <p><a href={this.state.response} target="_blank ">{this.state.response} </a></p>
+                        <a href={this.state.response} target="_blank ">{this.state.response} </a>
                         <br/>
                             <img  width='300' src={this.state.response} alt =""/>
 
-                        
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <Footer />
+               
             </Container>
+           
             <br/>
             <br/>
             <br/>
-        </div>
+            </div>
     );
 }
 }
