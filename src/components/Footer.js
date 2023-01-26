@@ -8,22 +8,18 @@ class Footer extends Component {
         return (
         <div>
             <Container>
-            <Card>
-              
-                <Card.Body>
-                <Card.Title></Card.Title>
-                <Card.Text>
-               
-                   <p>Concept and programming by <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/marlon-barrios-solano-98599b205/">Marlon Barrios Solano</a></p>
-                   <p><a target="_blank" rel="noreferrer" href=" https://beta.openai.com/overview">OpenAI</a></p>
-                   <p><a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Bauhaus">Bauhaus</a></p>
-               
-               
-                </Card.Text>
-              
-                </Card.Body>
-            </Card>
-            </Container>
+    <Card>
+        <Card.Body>
+            <Card.Title>infinite rothko</Card.Title>
+            <Card.Text>
+                <p>Concept and programming by <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/marlon-barrios-solano-98599b205/">Marlon Barrios Solano</a></p>
+                <p>Powered by <a target="_blank" rel="noreferrer" href=" https://beta.openai.com/overview">OpenAI</a></p>
+                <p>Inspired by <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Mark_Rothko">Mark Rothko</a> paintings</p>
+                <p>Copyright &copy; 2022</p>
+            </Card.Text>
+        </Card.Body>
+    </Card>
+</Container>
         </div>
         );
     }

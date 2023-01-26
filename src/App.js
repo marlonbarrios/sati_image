@@ -6,11 +6,13 @@ import { Container } from 'react-bootstrap';
 function App() {
   return (
 
-    <div className="App" style={{
-      backgroundImage: `url(${process.env.PUBLIC_URL
-        + "/back2.png"})`,
-    height: "300px", backgroundRepeat: "repeat"
-  }} >
+  <div className="App" 
+  // style={{
+  //     backgroundImage: `url(${process.env.PUBLIC_URL
+  //       + "/back2.png"})`,
+  //   height: "250px", backgroundRepeat: "repeat"
+  // }} 
+  >
       <Container>
         <Images />
         <Footer />
