@@ -32,6 +32,20 @@ class Images extends Component {
 
         // let size = this.state.size;
 
+        openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: "generate keywords  about Mark Rothko including influences\n\n-Joseph Albers \n-Bauhaus \n-Op Art \n-Interaction of Color \n-Modernism \n-Abstract Expressionism \n-Color Theory \n-Geometric Abstraction  \n-Shape and Form  \n-Visual Perception  \n-Art Education  \n-Josef Albers Foundation",
+            temperature: 0.45,
+            max_tokens: 352,
+            top_p: 1,
+            frequency_penalty: 0.8,
+            presence_penalty: 0,
+          });
+
+
+
+
+
               openai.createCompletion({
                 model: "text-davinci-003",
                 prompt: `Characteristics  of Rothko's paintings include: ${formDataObj.ideaName}`,

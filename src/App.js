@@ -1,7 +1,8 @@
 import './App.css';
 
-import Images from './components/Images';
+ import Images from './components/Images';
 import Footer from './components/Footer';
+
 import { Container } from 'react-bootstrap';
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
   // }} 
   >
       <Container>
-        <Images />
+       <Images />
         <Footer />
       </Container>
     </div>
