@@ -15,7 +15,7 @@ class Images extends Component {
             heading: "The image will appear here",
             response: "...creating image...",
             size: "large",
-            generatedText: "The generated text will appear here in seconds after you click...",
+            generatedText: "Text and image will appear here in seconds...",
             isLoading: false
         }
     }
@@ -37,29 +37,30 @@ class Images extends Component {
 
         this.setState({ isLoading: true });
 
-        openai.createImage({
-            prompt: `${formDataObj.ideaName}  art style image works background performances films music murals sculpture architecture ideas drawings sculptures paintings  photography dances 2d 3d realist or surreal`,
-            n: 1,
-            size: size === "large" ? "1024x1024" : size === "medium" ? "512x512" : "256x256",
-        }).then((response) => {
+        openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: 
+            `Create a prompt as a teaching poem in Pali using at least one of the  three marks of existence as a guide; when use Pali and Translate to English, write english first max 50 words`,
+            
+            temperature: 0.2,
+            max_tokens: 300,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+          }).then((response) => {
             this.setState({
-                heading: `${formDataObj.ideaName}`,
-                response: `${response.data.data[0].url}`,
-                isLoading: false
-            }, () => {
-              openai.createCompletion({
-                model: "text-davinci-003",
-                prompt: `Generate a text in first person about ${formDataObj.ideaName} with the following topics: My name is... and Name of generated piece based in his naming style; create your own name 2.-Relevant biography, dates, art style, most famous work pieces.
-                3.-Real quotes about ${formDataObj.ideaName} art from  the artist, critics , art historians,  art lovers. 4.-Generate  5 keywords about ${formDataObj.ideaName}  pieces. Separate the keywords with a comma. Write the text sepated by topics named: This new piece is called , write the bio without tittling it, it has been writen and said about my workeven if they are not possitive (for the quotes). Write in first person as if you were the artist's voice. If the artist is still alive, write in first person as if you were the artist and reveal that you are still alive. Include polemic... invent a name if you dont know, have fun. Are you alive, are you dead?`,
-                temperature: 0.7,
-                max_tokens: 700,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
-              }).then((response) => {
+                generatedText: `${response.data.choices[0].text}`,
+                isLoading: false,
+            }, () => {   openai.createImage({
+                prompt: `black and white, minimalist, pure light, abstract${response.data.choices[0].text}`,
+                n: 1,
+                size: size === "large" ? "1024x1024" : size === "medium" ? "512x512" : "256x256",
+            }).then((response) => {
                 this.setState({
-                    generatedText: `${response.data.choices[0].text}`,
-                    isLoading: false,
+                    heading: ` ${formDataObj.ideaName}`,
+                    response: `${response.data.data[0].url}`,
+                    isLoading: false
+              
                 }).catch((error) => {
                     console.log(error);
                 });
@@ -77,7 +78,11 @@ render() {
     return (
         <div >
           
-            <Container  >
+            <Container style={ {
+            backgroundImage: `url(${this.state.response})`, 
+            backgroundRepeat: "repeat", 
+            backgroundSize: "cover", 
+            backgroundPosition: "center"}}>
                
     <h2 style={{
     color: "#ded5d5",
@@ -88,9 +93,9 @@ render() {
     marginBottom: "30px",
     marginTop: "20px",
     borderRadius: "10px",
-    backgroundImage: `url(${this.state.response})`, backgroundRepeat: "repeat", backgroundSize: "cover", backgroundPosition: "center"
-  }}>art_AI_fact</h2>
-                <img src="molecules.png" alt="logo" style={{ width: "200px", height: "80px", margin: "auto", marginTop: "5px", display: "block" }} />
+
+  }}>SATI: Rememeber This </h2>
+                {/* <img src="molecules.png" alt="logo" style={{ width: "200px", height: "80px", margin: "auto", marginTop: "5px", display: "block" }} /> */}
                 <Form onSubmit={this.onFormSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label style={{
@@ -102,8 +107,8 @@ render() {
     textShadow: '1px 2px 2px white, 0 2px 1em white, 0 0 0.2em white',
     backgroundImage: `url(${this.state.response})`, backgroundRepeat: "repeat", backgroundSize: "cover", backgroundPosition: "center"
   }} >
-    <p>art_AI_fact allows you to generate synthetic 'artists’, their work and trajectory. Input a name of a real well known artist dead or alive and art_AI_fact will extend their work, legacy and 'voice' with a new ‘synthetic’ work and text deployed in 1st person as an augmented artist bio. If you leave the input box empty, a totally ’synth’ artist will be generated: an artist that never existed: an art_AI_fact.</p>
-  <br/>
+
+<p>Remeber This. Named after the Buddhist term for 'mindfulness' or 'remembering', Sati is an application powered by AI. It combines advanced text and image generation technologies to help users recall and reflect upon the Three Marks of Existence in Buddhist philosophy: Anicca (Impermanence), Dukkha (Suffering), and Anatta (Non-self). The app creates vivid AI-generated visuals paired with enlightening narratives to symbolize these profound truths, encouraging contemplation and internalization. Interestingly, both the image and text presented by Sati are ephemeral, mirroring the teaching of Anicca and reinforcing the impermanent nature of all phenomena. This unique feature enhances mindful engagement, making the exploration of ancient Buddhist wisdom a dynamic aesthetic experience in the AI age.</p>
  </Form.Label>
 <Form.Group style={{
     display: "flex",
@@ -118,9 +123,9 @@ render() {
 </Form.Group>
  <Button variant="primary" size='lg' type="submit" style={{  textShadow: "2px 5px 4px #000000",
                 boxShadow:    "2px 5px 4px #000000" ,   marginTop: "5px", backgroundColor: 'grey', borderColor: 'white'   }}>
-                     generate art_AI_fact
+                  Remember
                     </Button>
-                    <Form.Control style={{
+                    {/* <Form.Control style={{
                 boxShadow:    "2px 5px 4px #000000",
                 textAlign: "center",
                 margin: "15px"
@@ -129,7 +134,7 @@ render() {
                         name="ideaName"
                         placeholder="you may or not... input an artist name here...made-up, dead or alive" ></Form.Control>
                         <Form.Text className="text-muted">
-                        </Form.Text>
+                        </Form.Text> */}
                     </Form.Group>
                 </Form>
                 <br/>
@@ -139,19 +144,22 @@ render() {
     {/* <Card.Title><h4> {this.state.heading}</h4></Card.Title> */}
     <hr/>
     <br/>
-    <Card.Text>
-        <p>{this.state.heading} </p>
-        {this.state.isLoading ? <ClipLoader /> :  <a style={{margin: "auto" , width:'300'}} download="artaifact" rel="noreferrer" href={this.state.response} target="_blank">
-        <img style={{width: "98%"}} src={this.state.response} alt=''/>
-    </a>}
-
+   
   
-
-
-    </Card.Text>
     <Card.Text>
     {this.state.isLoading ? <ClipLoader /> :<p>{this.state.generatedText}</p>}
+    <Card.Text>
+
+        {/* <p>{this.state.heading} </p> */}
+
+        {this.state.isLoading ? <ClipLoader /> :  <a style={{margin: "auto" , width:'300'}} download="artaifact" rel="noreferrer" href={this.state.response} target="_blank">
+        <img style={{width: "90%"}} src={this.state.response} alt=''/>
+    </a>}
+
     </Card.Text>
+
+    </Card.Text>
+   
   </Card.Body> 
                 </Card>
             </Container>
