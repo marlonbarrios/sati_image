@@ -39,8 +39,7 @@ class Images extends Component {
 
         openai.createCompletion({
             model: "text-davinci-003",
-            prompt: 
-            `Create a prompt as a teaching poem in Pali using at least one of the  three marks of existence as a guide; when use Pali and Translate to English, write english first max 50 words`,
+            prompt:  `Create a prompt as a teaching poem  and allways start expressing that This poem is a gift for you: use BUDDHIST TEACHINGS; you may use  Pali, translate to english,  max 200  words, USE Prose format and  use  any of the following words: Anicca, Dukkha, Anatta, Impermanence, Suffering, Non-self,`,
             
             temperature: 0.2,
             max_tokens: 300,
@@ -52,7 +51,7 @@ class Images extends Component {
                 generatedText: `${response.data.choices[0].text}`,
                 isLoading: false,
             }, () => {   openai.createImage({
-                prompt: `black and white, minimalist, pure light, abstract${response.data.choices[0].text}`,
+                prompt: `black and white, minimalist, pure light, abstract, white background ${response.data.choices[0].text}`,
                 n: 1,
                 size: size === "large" ? "1024x1024" : size === "medium" ? "512x512" : "256x256",
             }).then((response) => {
