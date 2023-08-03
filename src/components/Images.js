@@ -93,7 +93,7 @@ render() {
     marginTop: "20px",
     borderRadius: "10px",
 
-  }}>SATI: Rememeber This </h2>
+  }}>SATI: Remember This </h2>
                 {/* <img src="molecules.png" alt="logo" style={{ width: "200px", height: "80px", margin: "auto", marginTop: "5px", display: "block" }} /> */}
                 <Form onSubmit={this.onFormSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
